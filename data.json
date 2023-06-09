@@ -52,7 +52,14 @@
         "image": "../assets/livro02.png",
         "systemEntryDate": "02/01/2020",
         "synopsis": "Mussum Ipsum, cacilds vidis litro abertis. In elementis mé pra quem é amistosis quis leo.Posuere libero varius. Nullam a nisl ut ante blandit hendrerit. Aenean sit amet nisi.Quem num gosta di mé, boa gentis num é.Interessantiss quisso pudia ce receita de bolis, mais bolis eu num gostis.",
-        "rentHistory": []
+        "rentHistory": [
+          {
+            "studentName": "Pedro Knorst",
+            "class": "T411",
+            "withdrawalDate": "29/05/2023",
+            "deliveryDate": "19/06/2023"
+          }
+        ]
       },
       {
         "title": "A revolução dos bichos",
@@ -65,7 +72,14 @@
         "image": "../assets/livro03.png",
         "systemEntryDate": "04/12/2019",
         "synopsis": "Mussum Ipsum, cacilds vidis litro abertis. In elementis mé pra quem é amistosis quis leo.Posuere libero varius. Nullam a nisl ut ante blandit hendrerit. Aenean sit amet nisi.Quem num gosta di mé, boa gentis num é.Interessantiss quisso pudia ce receita de bolis, mais bolis eu num gostis.",
-        "rentHistory": []
+        "rentHistory": [
+          {
+            "studentName": "Rogerin da Silva",
+            "class": "T412",
+            "withdrawalDate": "21/04/2023",
+            "deliveryDate": "19/05/2023"
+          }
+        ]
       },
       {
         "title": "O homem mais rico da Babilônia",

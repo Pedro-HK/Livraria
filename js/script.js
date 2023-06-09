@@ -224,7 +224,38 @@
 
     data.forEach((book) => {
       let arrayAlunos = book.rentHistory;
-      console.log(arrayAlunos);
+
+      function sortTable(index_row, typeSort) {
+        function converterData(dataString) {
+          const partes = dataString.split('/');
+          const dia = parseInt(partes[0]);
+          const mes = parseInt(partes[1]) - 1;
+          const ano = parseInt(partes[2]);
+          return new Date(ano, mes, dia);
+        }
+
+        const tbody = document.querySelector('.pagina_emprestimos table tbody');
+        const rows = Array.from(tbody.rows).slice(1);
+        const sortedRows = rows.sort((rowA, rowB) => {
+          const nameA = rowA.cells[index_row].textContent.toLowerCase();
+          const nameB = rowB.cells[index_row].textContent.toLowerCase();
+          if (nameA < nameB) return -1;
+          if (nameA > nameB) return 1;
+          return 0;
+        });
+
+        const sortedRows2 = rows.sort((rowA, rowB) => {
+          const nameA = converterData(rowA.cells[index_row].textContent);
+          const nameB = converterData(rowB.cells[index_row].textContent);
+          return nameA - nameB;
+        });
+
+        if (typeSort === true) {
+          sortedRows.forEach((row) => tbody.appendChild(row));
+        } else {
+          sortedRows2.forEach((row) => tbody.appendChild(row));
+        }
+      }
 
       function putAluno(arrayAlunos) {
         arrayAlunos.forEach((aluno) => {
@@ -245,59 +276,23 @@
       putAluno(arrayAlunos);
 
       $alunos.addEventListener('click', () => {
-        arrayAlunos.sort(function (a, b) {
-          if (a.studentName < b.studentName) {
-            return -1;
-          } else {
-            return true;
-          }
-        });
-
-        console.log(arrayAlunos);
-
-        putAluno(arrayAlunos);
+        sortTable(0, true);
       });
 
       $turmas.addEventListener('click', () => {
-        arrayAlunos.sort((a, b) => {
-          if (a.class < b.class) {
-            return -1;
-          } else {
-            return true;
-          }
-        });
+        sortTable(1, true);
+      });
 
-        tbody.innerHTML = firstTr;
-
-        putAluno(arrayAlunos);
+      $livros.addEventListener('click', () => {
+        sortTable(2, true);
       });
 
       $retirada.addEventListener('click', () => {
-        arrayAlunos.sort((a, b) => {
-          if (a.withdrawalDate < b.withdrawalDate) {
-            return -1;
-          } else {
-            return true;
-          }
-        });
-
-        tbody.innerHTML = firstTr;
-
-        putAluno(arrayAlunos);
+        sortTable(3, false);
       });
 
       $entrega.addEventListener('click', () => {
-        arrayAlunos.sort((a, b) => {
-          if (a.deliveryDate < b.deliveryDate) {
-            return -1;
-          } else {
-            return true;
-          }
-        });
-
-        tbody.innerHTML = firstTr;
-
-        putAluno(arrayAlunos);
+        sortTable(4, false);
       });
     });
 
@@ -406,6 +401,7 @@
     const $autor = document.querySelector('.input_autor #autor');
     const $genero = document.querySelector('.input_genero .default_option');
     const $dataEntrada = document.querySelector('.input_data #data');
+    const $capa = document.querySelector('.capa .label_image .selected_img');
 
     const $salvar = document.querySelector('.container_botoes .botao_salvar');
 
@@ -439,7 +435,11 @@
         books.push(newBook);
       }
 
-      addBook(data);
+      if ($title.value !== '' && $sinopse.value !== '' && $autor.value !== '' && $genero.value !== '' && $dataEntrada.value !== '' && $capa.src !== '') {
+        addBook(data);
+      } else {
+        alert('Preencha todos os campos!');
+      }
 
       $containerMain.removeChild(novo_livro);
 
@@ -1076,6 +1076,8 @@
                 $selected_book.innerHTML = '';
 
                 putBooks(data);
+              } else {
+                alert('Preencha todos os campos!');
               }
             });
 
