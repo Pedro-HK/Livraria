@@ -58,6 +58,11 @@ main {
   padding: 0.75rem;
   font-weight: 700;
   font-size: 1rem;
+  transition: all 0.2s ease-in-out;
+}
+
+.login .button_login:hover {
+  background-color: #ffd857;
 }
 
 .login a {

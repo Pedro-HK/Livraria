@@ -454,20 +454,40 @@ main .nav_paginas ul li:hover {
   background-color: #ffc501;
   padding: 1rem;
   border-radius: 5px;
+  transition: all 0.2s ease-in-out;
+}
+
+.botao_devolucao:hover {
+  background-color: #ffd857;
 }
 
 .botao_editar {
   border: #167ce2 solid 1px;
   color: #167ce2;
+  transition: all 0.2s ease-in-out;
+}
+
+.botao_editar:hover {
+  background-color: #d8e6f3;
 }
 
 .botao_inativar {
   border: #ed5e5e solid 1px;
   color: #ed5e5e;
+  transition: all 0.2s ease-in-out;
+}
+
+.botao_inativar:hover {
+  background-color: #f2cdcd;
 }
 
 .botao_historico {
   border: #adb5bd solid 1px;
+  transition: all 0.2s ease-in-out;
+}
+
+.botao_historico:hover {
+  background-color: #e0e8ef;
 }
 
 .selected_book_emprestar {
