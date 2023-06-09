@@ -20,6 +20,21 @@ O desafio se dá através do controle dos empréstimos de livros em uma bibliote
 - 10% organização de código + versionamento github;
 
 # Prévia das páginas do site
+## Desktop
+![Desktop 1](https://github.com/Pedro-HK/Prova-Final-Pre-Rocket/blob/main/Telas/Login.png)
+![Desktop 2](https://github.com/Pedro-HK/Prova-Final-Pre-Rocket/blob/main/Telas/Home.png)
+![Desktop 3](https://github.com/Pedro-HK/Prova-Final-Pre-Rocket/blob/main/Telas/Historico%20de%20emprestimos.png)
+![Desktop 4](https://github.com/Pedro-HK/Prova-Final-Pre-Rocket/blob/main/Telas/Editar%20Livro.png)
+![Desktop 5](https://github.com/Pedro-HK/Prova-Final-Pre-Rocket/blob/main/Telas/Cadastrar%20novo%20livro.png)
+![Desktop 6](https://github.com/Pedro-HK/Prova-Final-Pre-Rocket/blob/main/Telas/Biblioteca.png)
+
+## Mobile
+![Mobile 1](https://github.com/Pedro-HK/Prova-Final-Pre-Rocket/blob/main/Telas/Login-2.png)
+![Mobile 2](https://github.com/Pedro-HK/Prova-Final-Pre-Rocket/blob/main/Telas/Home-2.png)
+![Mobile 3](https://github.com/Pedro-HK/Prova-Final-Pre-Rocket/blob/main/Telas/Historico%20de%20emprestimos-2.png)
+![Mobile 4](https://github.com/Pedro-HK/Prova-Final-Pre-Rocket/blob/main/Telas/Editar%20Livro-2.png)
+![Mobile 5](https://github.com/Pedro-HK/Prova-Final-Pre-Rocket/blob/main/Telas/Cadastrar%20novo%20livro-2.png)
+![Mobile 6](https://github.com/Pedro-HK/Prova-Final-Pre-Rocket/blob/main/Telas/Cadastrar%20novo%20livro-2.png)
 
 # Tecnologias utilizadas
 - HTML
