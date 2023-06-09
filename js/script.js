@@ -620,7 +620,6 @@
         const card_selected_inativado = document.createElement('div');
         const body_historico = document.createElement('tbody');
         const table_historico = document.createElement('table');
-        const tr_historico = document.createElement('tr');
 
         card_selected_infos.classList.add('selected_book_infos');
         card_selected_infos.classList.add('selected_book_infos_1');
@@ -682,10 +681,10 @@
 
         body_historico.innerHTML = `
         <tr class="filtros">
-          <td><img src="../imagens/Caminho 147.svg" /></td>
-          <td><img src="../imagens/Caminho 147.svg" /></td>
-          <td><img src="../imagens/Caminho 147.svg" /></td>
-          <td><img src="../imagens/Caminho 147.svg" /></td>
+          <td class="alunos"><img src="../imagens/Caminho 147.svg" /></td>
+          <td class="turmas"><img src="../imagens/Caminho 147.svg" /></td>
+          <td class="retirada"><img src="../imagens/Caminho 147.svg" /></td>
+          <td class="entrega"><img src="../imagens/Caminho 147.svg" /></td>
         </tr>
         `;
 
@@ -735,6 +734,59 @@
           botao_historico.addEventListener('click', () => {
             $selected_book.innerHTML = '';
             $selected_book.appendChild(card_selected_historico);
+
+            const $alunos = document.querySelector('.selected_book_historico table tbody tr .alunos');
+            const $turmas = document.querySelector('.selected_book_historico table tbody tr .turmas');
+            const $retirada = document.querySelector('.selected_book_historico table tbody tr .retirada');
+            const $entrega = document.querySelector('.selected_book_historico table tbody tr .entrega');
+
+            function sortTable(index_row, typeSort) {
+              function converterData(dataString) {
+                const partes = dataString.split('/');
+                const dia = parseInt(partes[0]);
+                const mes = parseInt(partes[1]) - 1;
+                const ano = parseInt(partes[2]);
+                return new Date(ano, mes, dia);
+              }
+
+              const tbody = document.querySelector('.selected_book_historico table tbody');
+              const rows = Array.from(tbody.rows).slice(1);
+              const sortedRows = rows.sort((rowA, rowB) => {
+                const nameA = rowA.cells[index_row].textContent.toLowerCase();
+                const nameB = rowB.cells[index_row].textContent.toLowerCase();
+                if (nameA < nameB) return -1;
+                if (nameA > nameB) return 1;
+                return 0;
+              });
+
+              const sortedRows2 = rows.sort((rowA, rowB) => {
+                const nameA = converterData(rowA.cells[index_row].textContent);
+                const nameB = converterData(rowB.cells[index_row].textContent);
+                return nameA - nameB;
+              });
+
+              if (typeSort === true) {
+                sortedRows.forEach((row) => tbody.appendChild(row));
+              } else {
+                sortedRows2.forEach((row) => tbody.appendChild(row));
+              }
+            }
+
+            $alunos.addEventListener('click', () => {
+              sortTable(0, true);
+            });
+
+            $turmas.addEventListener('click', () => {
+              sortTable(1, true);
+            });
+
+            $retirada.addEventListener('click', () => {
+              sortTable(2, false);
+            });
+
+            $entrega.addEventListener('click', () => {
+              sortTable(3, false);
+            });
 
             const icone_fechar_4 = document.querySelector('.selected_book_historico .icone_fechar');
 
@@ -908,9 +960,9 @@
                   deliveryDate: changedDelivery,
                 };
 
-                let historicoAlunos = book.rentHistory;
+                const tr_historico = document.createElement('tr');
 
-                historicoAlunos.push(aluno);
+                book.rentHistory.push(aluno);
 
                 tr_historico.innerHTML = `
                     <td>${$nome.value}</td>
