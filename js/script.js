@@ -401,7 +401,6 @@
     const $autor = document.querySelector('.input_autor #autor');
     const $genero = document.querySelector('.input_genero .default_option');
     const $dataEntrada = document.querySelector('.input_data #data');
-    const $capa = document.querySelector('.capa .label_image .selected_img');
 
     const $salvar = document.querySelector('.container_botoes .botao_salvar');
 
@@ -412,7 +411,7 @@
         const $autor = document.querySelector('.input_autor #autor');
         const $genero = document.querySelector('.input_genero .default_option');
         const $dataEntrada = document.querySelector('.input_data #data');
-        const $capa = document.querySelector('.capa .label_image .selected_img');
+        const $capa_img = document.querySelector('.capa .label_image .selected_img');
 
         let inputEntry = new Date($dataEntrada.value);
 
@@ -426,7 +425,7 @@
             isActive: true,
             description: '',
           },
-          image: $capa.src,
+          image: $capa_img.src,
           systemEntryDate: changedEntry,
           synopsis: $sinopse.value,
           rentHistory: [],
@@ -435,10 +434,18 @@
         books.push(newBook);
       }
 
-      if ($title.value !== '' && $sinopse.value !== '' && $autor.value !== '' && $genero.value !== '' && $dataEntrada.value !== '' && $capa.src !== '') {
+      const $capa = document.querySelector('.capa .label_image');
+
+      if ($title.value !== '' && $sinopse.value !== '' && $autor.value !== '' && $genero.value !== '' && $dataEntrada.value !== '' && $capa.hasChildNodes()) {
         addBook(data);
       } else {
         alert('Preencha todos os campos!');
+        $title.value = '';
+        $sinopse.value = '';
+        $autor.value = '';
+        $genero.value = '';
+        $selected_option.innerHTML = '';
+        $dataEntrada.value = '';
       }
 
       $containerMain.removeChild(novo_livro);
@@ -1030,7 +1037,7 @@
             const $titulo_1 = document.querySelector('.pagina_editar #titulo');
             const $sinopse_1 = document.querySelector('.pagina_editar #sinopse');
             const $autor_1 = document.querySelector('.pagina_editar #autor');
-            const $genero_1 = document.querySelector('.pagina_editar .default_option');
+            // const $genero_1 = document.querySelector('.pagina_editar .default_option');
             const $data_1 = document.querySelector('.pagina_editar #data');
 
             function converterData(dataString) {
@@ -1044,7 +1051,7 @@
             $titulo_1.value = book.title;
             $sinopse_1.value = book.synopsis;
             $autor_1.value = book.author;
-            $genero_1.value = book.genre;
+            $select_default.textContent = book.genre;
             $data_1.value = converterData(book.systemEntryDate);
 
             const $salvar = document.querySelector('.pagina_editar .botao_salvar');
