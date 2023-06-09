@@ -34,7 +34,7 @@ O desafio se dá através do controle dos empréstimos de livros em uma bibliote
 ![Mobile 3](https://github.com/Pedro-HK/Prova-Final-Pre-Rocket/blob/main/Telas/Historico%20de%20emprestimos-2.png)
 ![Mobile 4](https://github.com/Pedro-HK/Prova-Final-Pre-Rocket/blob/main/Telas/Editar%20Livro-2.png)
 ![Mobile 5](https://github.com/Pedro-HK/Prova-Final-Pre-Rocket/blob/main/Telas/Cadastrar%20novo%20livro-2.png)
-![Mobile 6](https://github.com/Pedro-HK/Prova-Final-Pre-Rocket/blob/main/Telas/Cadastrar%20novo%20livro-2.png)
+![Mobile 6](https://github.com/Pedro-HK/Prova-Final-Pre-Rocket/blob/main/Telas/Biblioteca-2.png)
 
 # Tecnologias utilizadas
 - HTML
