@@ -628,6 +628,7 @@ main .nav_paginas ul li:hover {
 }
 
 .selected_book_historico tbody .filtros td img {
+  cursor: pointer;
   border-bottom: black 1px solid;
   padding: 0.5rem 4rem 0.5rem 0;
 }
