@@ -193,7 +193,6 @@
     .then((body) => {
       data = body.data;
       data = data.books;
-      console.log(data);
     });
 
   //Trocas de pagina
@@ -1089,7 +1088,6 @@
             const $titulo_1 = document.querySelector('.pagina_editar #titulo');
             const $sinopse_1 = document.querySelector('.pagina_editar #sinopse');
             const $autor_1 = document.querySelector('.pagina_editar #autor');
-            // const $genero_1 = document.querySelector('.pagina_editar .default_option');
             const $data_1 = document.querySelector('.pagina_editar #data');
 
             function converterData(dataString) {
