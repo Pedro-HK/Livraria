@@ -980,6 +980,8 @@
           //Função para editar livro
 
           $botao_editar.addEventListener('click', () => {
+            $containerMain.removeChild(biblioteca);
+
             const editar_livro = document.createElement('div');
             editar_livro.classList.add('pagina_editar');
             editar_livro.innerHTML = `
@@ -1031,7 +1033,6 @@
               </section>
             `;
 
-            $containerMain.removeChild(biblioteca);
             $containerMain.appendChild(editar_livro);
 
             $background.classList.add('hide');
@@ -1140,6 +1141,12 @@
             $cancelar.addEventListener('click', () => {
               $containerMain.removeChild(editar_livro);
               $containerMain.appendChild(biblioteca);
+
+              container_livros.innerHTML = '';
+
+              $selected_book.innerHTML = '';
+
+              putBooks(data);
             });
 
             const $home = document.querySelector('.home');
