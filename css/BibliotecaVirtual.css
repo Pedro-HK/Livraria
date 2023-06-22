@@ -143,7 +143,7 @@ main .nav_paginas ul li:hover {
 /* biblioteca */
 
 .livro_selecionado {
-  position: absolute;
+  position: fixed;
   top: 50px;
   left: 50%;
   max-width: 90%;
@@ -252,7 +252,7 @@ main .nav_paginas ul li:hover {
   background-color: white;
   padding: 0 5rem 0 0;
   color: #adb5bd;
-  transition: all 0.2s ease-in-out;
+  transition: all 0.4s ease-in-out;
 }
 
 .container_select .default_option:focus + p,
@@ -691,11 +691,16 @@ main .nav_paginas ul li:hover {
 .selected_book_inativado .botoes_edicao .botao_ativar {
   border: #49d749 solid 1px;
   color: #49d749;
+  transition: all 0.2s ease-in-out;
+}
+
+.selected_book_inativado .botoes_edicao .botao_ativar:hover {
+  background-color: #b5fbb5;
 }
 
 .selected_book_inativado .botao_devolucao {
   position: relative;
-  pointer-events: none;
+  cursor: not-allowed;
 }
 
 .selected_book_inativado .botao_devolucao::before {

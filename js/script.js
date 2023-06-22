@@ -250,6 +250,8 @@
     const $select_options = document.querySelectorAll('.selected_option .option');
 
     $container_select.addEventListener('click', () => {
+      // $container_select.classList.toggle('active');
+
       if (!$container_select.classList.contains('active')) {
         $container_select.classList.add('active');
         $select_options.forEach((option) => {
@@ -262,8 +264,8 @@
           });
         });
       } else {
-        $label_select.classList.remove('label_actived');
         $container_select.classList.remove('active');
+        $label_select.classList.remove('label_actived');
         $select_default.blur();
       }
     });
@@ -368,6 +370,8 @@
       `;
 
       $containerMain.appendChild($navHome);
+
+      alert('Livro cadastrado com sucesso!');
     });
 
     //Cancelar cadastro de novo Livro
@@ -975,6 +979,8 @@
           //Função para editar livro
 
           $botao_editar.addEventListener('click', () => {
+            const biblioteca = document.querySelector('.pagina_biblioteca');
+
             $containerMain.removeChild(biblioteca);
 
             const editar_livro = document.createElement('div');
