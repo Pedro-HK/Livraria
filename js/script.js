@@ -456,6 +456,7 @@
     $containerMain.appendChild(biblioteca);
 
     const $input_pesquisa = document.getElementById('pesquisa');
+    const $button_pesquisa = document.querySelector('.botao_input_pesquisa');
     const $container_select = document.querySelector('.container_select');
     const $select_default = document.querySelector('.default_option');
     const $select_options = document.querySelectorAll('.selected_option .option');
@@ -497,18 +498,16 @@
           books.sort((a, b) => {
             if (a.genre < b.genre) {
               return -1;
-            } else {
-              return true;
             }
+            return 1;
           });
           putBooks(books);
         } else if ($select_default.textContent === 'Autor') {
           books.sort((a, b) => {
             if (a.author < b.author) {
               return -1;
-            } else {
-              return true;
             }
+            return 1;
           });
           putBooks(books);
         } else if ($select_default.textContent === 'Data de Entrada') {
@@ -530,13 +529,17 @@
 
     //Pesquisar nome do livro desejado
 
-    $input_pesquisa.addEventListener('input', (e) => {
+    $button_pesquisa.addEventListener('click', (e) => {
       container_livros.innerHTML = '';
 
       const search_book = $input_pesquisa.value.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
 
       const filtered_books = data.filter((book) => {
-        return book.title.toLowerCase().includes(search_book);
+        return book.title
+          .toLowerCase()
+          .normalize('NFD')
+          .replace(/[\u0300-\u036f]/g, '')
+          .includes(search_book);
       });
 
       putBooks(filtered_books);
