@@ -430,11 +430,11 @@
       </nav>
       <section>
         <div class="container_inputs">
-          <div class="container_input_pesquisa">
+          <form class="container_input_pesquisa">
             <label for="pesquisa"><img src="../imagens/Caminho 263.svg" alt="Pesquisar" /></label>
             <input type="text" id="pesquisa" placeholder="Pesquisar livro..." />
-            <button class="botao_input_pesquisa">Buscar</button>
-          </div>
+            <button type="submit" class="botao_input_pesquisa">Buscar</button>
+          </form>
           <div class="container_select">
             <textarea readonly rows="1" class="default_option">Selecione</textarea>
             <p class="label_select label_disabled">Filtrar</p>
@@ -495,20 +495,10 @@
         container_livros.innerHTML = '';
 
         if ($select_default.textContent === 'Gênero') {
-          books.sort((a, b) => {
-            if (a.genre < b.genre) {
-              return -1;
-            }
-            return 1;
-          });
+          books.sort((a, b) => (a.genre < b.genre ? 1 : -1));
           putBooks(books);
         } else if ($select_default.textContent === 'Autor') {
-          books.sort((a, b) => {
-            if (a.author < b.author) {
-              return -1;
-            }
-            return 1;
-          });
+          books.sort((a, b) => (a.author < b.author ? 1 : -1));
           putBooks(books);
         } else if ($select_default.textContent === 'Data de Entrada') {
           function converterData(dataString) {
@@ -530,17 +520,19 @@
     //Pesquisar nome do livro desejado
 
     $button_pesquisa.addEventListener('click', (e) => {
+      e.preventDefault();
+
       container_livros.innerHTML = '';
 
       const search_book = $input_pesquisa.value.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
 
-      const filtered_books = data.filter((book) => {
-        return book.title
+      const filtered_books = data.filter((book) =>
+        book.title
           .toLowerCase()
           .normalize('NFD')
           .replace(/[\u0300-\u036f]/g, '')
-          .includes(search_book);
-      });
+          .includes(search_book)
+      );
 
       putBooks(filtered_books);
     });
