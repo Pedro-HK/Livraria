@@ -1,7 +1,7 @@
 (function () {
   const $user = document.getElementById('login_email');
   const $password = document.getElementById('login_senha');
-  const $login = document.querySelector('.button_login');
+  const $form = document.getElementById('form-login');
 
   let data;
 
@@ -14,17 +14,12 @@
       data = data.login;
     });
 
-  function getLogin(data) {
-    data.forEach((user) => {
-      if (user.email === $user.value && user.password === $password.value) {
-        $login.setAttribute('href', '../index.html');
-      } else {
-        $login.setAttribute('href', '#');
-      }
-    });
-  }
-
-  $login.addEventListener('click', () => {
-    getLogin(data);
+  $form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    if (data.find((user) => user.email === $user.value && user.password === $password.value)) {
+      window.location.href = '/paginas/BibliotecaVirtual.html';
+    } else {
+      alert('Email e/ou senha invalidos!');
+    }
   });
 })();
