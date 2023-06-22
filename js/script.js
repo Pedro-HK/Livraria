@@ -7,21 +7,31 @@
   const $emprestimos = document.querySelector('.nav_paginas .emprestimos');
   const $logout = document.querySelector('header div');
 
-  const biblioteca = document.createElement('div');
-  const novo_livro = document.createElement('div');
-  const emprestimos = document.createElement('div');
-  const editar_livro = document.createElement('div');
-
-  biblioteca.classList.add('pagina_biblioteca');
-  novo_livro.classList.add('pagina_novo_livro');
-  emprestimos.classList.add('pagina_emprestimos');
-  editar_livro.classList.add('pagina_editar');
-
   $logout.addEventListener('click', () => {
     $logout.classList.toggle('active_logout');
   });
 
-  emprestimos.innerHTML = `
+  // Fetch
+
+  let data;
+
+  fetch('../data.json')
+    .then((response) => {
+      return response.json();
+    })
+    .then((body) => {
+      data = body.data;
+      data = data.books;
+    });
+
+  //Trocas de pagina
+
+  //Pagina Historico de emprestimos
+
+  $emprestimos.addEventListener('click', () => {
+    const emprestimos = document.createElement('div');
+    emprestimos.classList.add('pagina_emprestimos');
+    emprestimos.innerHTML = `
       <nav class="nav_home">
         <a href="#" class="home">
           <img src="../imagens/chevron_left_FILL0_wght400_GRAD0_opsz48.svg" alt="Icone voltar" />
@@ -51,155 +61,6 @@
       </table>
   `;
 
-  biblioteca.innerHTML = `
-      <nav class="nav_home">
-        <a href="#" class="home">
-          <img src="../imagens/chevron_left_FILL0_wght400_GRAD0_opsz48.svg" alt="Icone voltar" />
-          Home
-        </a>
-        <p><b>/ Biblioteca</b></p>
-      </nav>
-      <section>
-        <div class="container_inputs">
-          <div class="container_input_pesquisa">
-            <label for="pesquisa"><img src="../imagens/Caminho 263.svg" alt="Pesquisar" /></label>
-            <input type="text" id="pesquisa" placeholder="Pesquisar livro..." />
-            <button class="botao_input_pesquisa">Buscar</button>
-          </div>
-          <div class="container_select">
-            <textarea readonly rows="1" class="default_option">Selecione</textarea>
-            <p class="label_select label_disabled">Filtrar</p>
-            <img src="../imagens/Polígono 4.svg" class="arrow" />
-            <ul class="selected_option select">
-              <li class="option">Selecione</li>
-              <li class="option">Gênero</li>
-              <li class="option">Autor</li>
-              <li class="option">Data de Entrada</li>
-            </ul>
-          </div>
-        </div>
-        <div class="container_livros"></div>
-      </section>
-      <div class="livro_selecionado hide"></div>
-  `;
-
-  novo_livro.innerHTML = `
-      <nav class="nav_home">
-        <a href="#" class="home">
-          <img src="../imagens/chevron_left_FILL0_wght400_GRAD0_opsz48.svg" alt="Icone voltar" />
-          Home
-        </a>
-        <p><b>/ Cadastrar novo livro</b></p>
-      </nav>
-      <section class="section_adicionar_livro">
-        <div class="container_adicionar_livro">
-          <label class="capa">
-            <input type="file" accept="image/*" class="input_image">
-            <span class="label_image"></span>
-          </label>
-
-          <div class="container_input input_titulo">
-            <input type="text" class="input_style" id="titulo" required />
-            <label for="titulo">Título</label>
-          </div>
-
-          <div class="container_input input_sinopse">
-            <textarea class="input_style" id="sinopse" required></textarea>
-            <label for="sinopse">Sinopse</label>
-          </div>
-
-          <div class="container_input input_autor">
-            <input type="text" class="input_style" id="autor" required />
-            <label for="autor">Autor</label>
-          </div>  
-
-          <div class="container_select input_genero">
-            <textarea readonly rows="1" class="default_option"></textarea>
-            <p class="label_select label_disabled">Gênero</p>
-            <img src="../imagens/Polígono 4.svg" class="arrow" />
-            <ul class="selected_option select">
-            </ul>
-          </div>
-
-          <div class="container_input input_data">
-            <input type="date" class="input_style" id="data" required />
-            <label for="data">Data de entrada</label>
-          </div>
-        </div>
-        <div class="container_botoes">
-          <button class="botao_cancelar">Cancelar</button>
-          <button class="botao_salvar">Salvar</button>
-        </div>
-      </section>
-    `;
-
-  editar_livro.innerHTML = `
-      <nav class="nav_home">
-        <a href="#" class="home">
-          <img src="../imagens/chevron_left_FILL0_wght400_GRAD0_opsz48.svg" alt="Icone voltar" />
-          Home
-        </a>
-        <p><b>/ Editar livro</b></p>
-      </nav>
-      <section class="section_adicionar_livro">
-        <div class="container_adicionar_livro">
-          <div class="capa">
-            <img alt="Imagem capa" />
-          </div>
-
-          <div class="container_input input_titulo">
-            <input type="text" class="input_style" id="titulo" required />
-            <label for="titulo">Título</label>
-          </div>
-
-          <div class="container_input input_sinopse">
-            <textarea class="input_style" id="sinopse" required></textarea>
-            <label for="sinopse">Sinopse</label>
-          </div>
-
-          <div class="container_input input_autor">
-            <input type="text" class="input_style" id="autor" required />
-            <label for="autor">Autor</label>
-          </div>
-
-          <div class="container_select input_genero">
-            <textarea readonly rows="1" class="default_option"></textarea>
-            <p class="label_select label_disabled">Gênero</p>
-            <img src="../imagens/Polígono 4.svg" class="arrow" />
-            <ul class="selected_option select">
-            </ul>
-          </div>
-
-          <div class="container_input input_data">
-            <input type="date" class="input_style" id="data" required />
-            <label for="data">Data de entrada</label>
-          </div>
-        </div>
-        <div class="container_botoes">
-          <button class="botao_cancelar">Cancelar</button>
-          <button class="botao_salvar">Salvar</button>
-        </div>
-      </section>
-    `;
-
-  // Fetch
-
-  let data;
-
-  fetch('../data.json')
-    .then((response) => {
-      return response.json();
-    })
-    .then((body) => {
-      data = body.data;
-      data = data.books;
-    });
-
-  //Trocas de pagina
-
-  //Pagina Historico de emprestimos
-
-  $emprestimos.addEventListener('click', () => {
     $containerMain.removeChild($navHome);
     $containerMain.appendChild(emprestimos);
 
@@ -309,6 +170,58 @@
   //Pagina Cadastrar Novo Livro
 
   $novo_livro.addEventListener('click', () => {
+    const novo_livro = document.createElement('div');
+    novo_livro.classList.add('pagina_novo_livro');
+    novo_livro.innerHTML = `
+      <nav class="nav_home">
+        <a href="#" class="home">
+          <img src="../imagens/chevron_left_FILL0_wght400_GRAD0_opsz48.svg" alt="Icone voltar" />
+          Home
+        </a>
+        <p><b>/ Cadastrar novo livro</b></p>
+      </nav>
+      <section class="section_adicionar_livro">
+        <div class="container_adicionar_livro">
+          <label class="capa">
+            <input type="file" accept="image/*" class="input_image">
+            <span class="label_image"></span>
+          </label>
+
+          <div class="container_input input_titulo">
+            <input type="text" class="input_style" id="titulo" required />
+            <label for="titulo">Título</label>
+          </div>
+
+          <div class="container_input input_sinopse">
+            <textarea class="input_style" id="sinopse" required></textarea>
+            <label for="sinopse">Sinopse</label>
+          </div>
+
+          <div class="container_input input_autor">
+            <input type="text" class="input_style" id="autor" required />
+            <label for="autor">Autor</label>
+          </div>  
+
+          <div class="container_select input_genero">
+            <textarea readonly rows="1" class="default_option"></textarea>
+            <p class="label_select label_disabled">Gênero</p>
+            <img src="../imagens/Polígono 4.svg" class="arrow" />
+            <ul class="selected_option select">
+            </ul>
+          </div>
+
+          <div class="container_input input_data">
+            <input type="date" class="input_style" id="data" required />
+            <label for="data">Data de entrada</label>
+          </div>
+        </div>
+        <div class="container_botoes">
+          <button class="botao_cancelar">Cancelar</button>
+          <button class="botao_salvar">Salvar</button>
+        </div>
+      </section>
+    `;
+
     $containerMain.removeChild($navHome);
     $containerMain.appendChild(novo_livro);
 
@@ -504,6 +417,41 @@
   //Pagina Biblioteca
 
   $biblioteca.addEventListener('click', () => {
+    const biblioteca = document.createElement('div');
+    biblioteca.classList.add('pagina_biblioteca');
+
+    biblioteca.innerHTML = `
+      <nav class="nav_home">
+        <a href="#" class="home">
+          <img src="../imagens/chevron_left_FILL0_wght400_GRAD0_opsz48.svg" alt="Icone voltar" />
+          Home
+        </a>
+        <p><b>/ Biblioteca</b></p>
+      </nav>
+      <section>
+        <div class="container_inputs">
+          <div class="container_input_pesquisa">
+            <label for="pesquisa"><img src="../imagens/Caminho 263.svg" alt="Pesquisar" /></label>
+            <input type="text" id="pesquisa" placeholder="Pesquisar livro..." />
+            <button class="botao_input_pesquisa">Buscar</button>
+          </div>
+          <div class="container_select">
+            <textarea readonly rows="1" class="default_option">Selecione</textarea>
+            <p class="label_select label_disabled">Filtrar</p>
+            <img src="../imagens/Polígono 4.svg" class="arrow" />
+            <ul class="selected_option select">
+              <li class="option">Selecione</li>
+              <li class="option">Gênero</li>
+              <li class="option">Autor</li>
+              <li class="option">Data de Entrada</li>
+            </ul>
+          </div>
+        </div>
+        <div class="container_livros"></div>
+      </section>
+      <div class="livro_selecionado hide"></div>
+  `;
+
     $containerMain.removeChild($navHome);
     $containerMain.appendChild(biblioteca);
 
@@ -1032,6 +980,57 @@
           //Função para editar livro
 
           $botao_editar.addEventListener('click', () => {
+            const editar_livro = document.createElement('div');
+            editar_livro.classList.add('pagina_editar');
+            editar_livro.innerHTML = `
+              <nav class="nav_home">
+                <a href="#" class="home">
+                  <img src="../imagens/chevron_left_FILL0_wght400_GRAD0_opsz48.svg" alt="Icone voltar" />
+                  Home
+                </a>
+                <p><b>/ Editar livro</b></p>
+              </nav>
+              <section class="section_adicionar_livro">
+                <div class="container_adicionar_livro">
+                  <div class="capa">
+                    <img alt="Imagem capa" />
+                  </div>
+
+                  <div class="container_input input_titulo">
+                    <input type="text" class="input_style" id="titulo" required />
+                    <label for="titulo">Título</label>
+                  </div>
+
+                  <div class="container_input input_sinopse">
+                    <textarea class="input_style" id="sinopse" required></textarea>
+                    <label for="sinopse">Sinopse</label>
+                  </div>
+
+                  <div class="container_input input_autor">
+                    <input type="text" class="input_style" id="autor" required />
+                    <label for="autor">Autor</label>
+                  </div>
+
+                  <div class="container_select input_genero">
+                    <textarea readonly rows="1" class="default_option"></textarea>
+                    <p class="label_select label_disabled">Gênero</p>
+                    <img src="../imagens/Polígono 4.svg" class="arrow" />
+                    <ul class="selected_option select">
+                    </ul>
+                  </div>
+
+                  <div class="container_input input_data">
+                    <input type="date" class="input_style" id="data" required />
+                    <label for="data">Data de entrada</label>
+                  </div>
+                </div>
+                <div class="container_botoes">
+                  <button class="botao_cancelar">Cancelar</button>
+                  <button class="botao_salvar">Salvar</button>
+                </div>
+              </section>
+            `;
+
             $containerMain.removeChild(biblioteca);
             $containerMain.appendChild(editar_livro);
 
