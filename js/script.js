@@ -897,7 +897,6 @@
 
             $emprestar_2.addEventListener('click', () => {
               if ($nome.value !== '' && $turma.value !== '' && $dataEntrega.value !== '' && $dataRetirada.value !== '' && $dataRetirada.value <= $dataEntrega.value) {
-                console.log($dataRetirada.value <= $dataEntrega.value);
                 let inputWithdrawal = new Date($dataRetirada.value);
                 let inputDelivery = new Date($dataEntrega.value);
 
@@ -1179,6 +1178,8 @@
                 $selected_book.innerHTML = '';
 
                 putBooks(data);
+
+                alert('Livro editado com sucesso!');
               } else {
                 alert('Preencha todos os campos!');
               }
