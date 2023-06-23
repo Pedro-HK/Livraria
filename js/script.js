@@ -34,7 +34,7 @@
     emprestimos.innerHTML = `
       <nav class="nav_home">
         <a href="#" class="home">
-          <img src="../imagens/chevron_left_FILL0_wght400_GRAD0_opsz48.svg" alt="Icone voltar" />
+          <img src="../assets/svg/chevron_left_FILL0_wght400_GRAD0_opsz48.svg" alt="Icone voltar" />
           Home
         </a>
         <p><b>/ Histórico de empréstimos</b></p>
@@ -51,11 +51,11 @@
         </thead>
         <tbody>
           <tr>
-            <td class="alunos"><img src="../imagens/Caminho 147.svg" /></td>
-            <td class="turmas"><img src="../imagens/Caminho 147.svg" /></td>
-            <td class="livros"><img src="../imagens/Caminho 147.svg" /></td>
-            <td class="retirada"><img src="../imagens/Caminho 147.svg" /></td>
-            <td class="entrega"><img src="../imagens/Caminho 147.svg" /></td>
+            <td class="alunos"><img src="../assets/svg/Caminho 147.svg" /></td>
+            <td class="turmas"><img src="../assets/svg/Caminho 147.svg" /></td>
+            <td class="livros"><img src="../assets/svg/Caminho 147.svg" /></td>
+            <td class="retirada"><img src="../assets/svg/Caminho 147.svg" /></td>
+            <td class="entrega"><img src="../assets/svg/Caminho 147.svg" /></td>
           </tr>
         </tbody>
       </table>
@@ -67,11 +67,11 @@
     const tbody = document.querySelector('.pagina_emprestimos table tbody');
     let firstTr = `
     <tr>
-      <td class="alunos"><img src="../imagens/Caminho 147.svg" /></td>
-      <td class="turmas"><img src="../imagens/Caminho 147.svg" /></td>
-      <td class="livros"><img src="../imagens/Caminho 147.svg" /></td>
-      <td class="retirada"><img src="../imagens/Caminho 147.svg" /></td>
-      <td class="entrega"><img src="../imagens/Caminho 147.svg" /></td>
+      <td class="alunos"><img src="../assets/svg/Caminho 147.svg" /></td>
+      <td class="turmas"><img src="../assets/svg/Caminho 147.svg" /></td>
+      <td class="livros"><img src="../assets/svg/Caminho 147.svg" /></td>
+      <td class="retirada"><img src="../assets/svg/Caminho 147.svg" /></td>
+      <td class="entrega"><img src="../assets/svg/Caminho 147.svg" /></td>
     </tr>
     `;
 
@@ -175,7 +175,7 @@
     novo_livro.innerHTML = `
       <nav class="nav_home">
         <a href="#" class="home">
-          <img src="../imagens/chevron_left_FILL0_wght400_GRAD0_opsz48.svg" alt="Icone voltar" />
+          <img src="../assets/svg/chevron_left_FILL0_wght400_GRAD0_opsz48.svg" alt="Icone voltar" />
           Home
         </a>
         <p><b>/ Cadastrar novo livro</b></p>
@@ -205,7 +205,7 @@
           <div class="container_select input_genero">
             <textarea readonly rows="1" class="default_option"></textarea>
             <p class="label_select">Gênero</p>
-            <img src="../imagens/Polígono 4.svg" class="arrow" />
+            <img src="../assets/svg/Polígono 4.svg" class="arrow" />
             <ul class="selected_option select">
             </ul>
           </div>
@@ -277,7 +277,7 @@
     const $label_image = document.querySelector('.capa .label_image');
 
     $label_image.innerHTML = `
-      <img src="../imagens/Caminho 261.svg" alt="Adicionar capa" />
+      <img src="../assets/svg/Caminho 261.svg" alt="Adicionar capa" />
       <p>Capa</p>
     `;
 
@@ -303,7 +303,7 @@
         reader.readAsDataURL(file);
       } else {
         $label_image.innerHTML = `
-          <img src="../imagens/Caminho 261.svg" alt="Adicionar capa" />
+          <img src="../assets/svg/Caminho 261.svg" alt="Adicionar capa" />
           <p>Capa</p>
         `;
       }
@@ -368,7 +368,7 @@
       }
 
       $label_image.innerHTML = `
-        <img src="../imagens/Caminho 261.svg" alt="Adicionar capa" />
+        <img src="../assets/svg/Caminho 261.svg" alt="Adicionar capa" />
         <p>Capa</p>
       `;
     });
@@ -388,7 +388,7 @@
       $containerMain.removeChild(novo_livro);
 
       $label_image.innerHTML = `
-        <img src="../imagens/Caminho 261.svg" alt="Adicionar capa" />
+        <img src="../assets/svg/Caminho 261.svg" alt="Adicionar capa" />
         <p>Capa</p>
       `;
 
@@ -409,7 +409,7 @@
       $containerMain.removeChild(novo_livro);
 
       $label_image.innerHTML = `
-        <img src="../imagens/Caminho 261.svg" alt="Adicionar capa" />
+        <img src="../assets/svg/Caminho 261.svg" alt="Adicionar capa" />
         <p>Capa</p>
       `;
 
@@ -426,7 +426,7 @@
     biblioteca.innerHTML = `
       <nav class="nav_home">
         <a href="#" class="home">
-          <img src="../imagens/chevron_left_FILL0_wght400_GRAD0_opsz48.svg" alt="Icone voltar" />
+          <img src="../assets/svg/chevron_left_FILL0_wght400_GRAD0_opsz48.svg" alt="Icone voltar" />
           Home
         </a>
         <p><b>/ Biblioteca</b></p>
@@ -434,14 +434,14 @@
       <section>
         <div class="container_inputs">
           <form class="container_input_pesquisa">
-            <label for="pesquisa"><img src="../imagens/Caminho 263.svg" alt="Pesquisar" /></label>
+            <label for="pesquisa"><img src="../assets/svg/Caminho 263.svg" alt="Pesquisar" /></label>
             <input type="text" id="pesquisa" placeholder="Pesquisar livro..." />
             <button type="submit" class="botao_input_pesquisa">Buscar</button>
           </form>
           <div class="container_select">
             <textarea readonly rows="1" class="default_option">Selecione</textarea>
             <p class="label_select">Ordenar</p>
-            <img src="../imagens/Polígono 4.svg" class="arrow" />
+            <img src="../assets/svg/Polígono 4.svg" class="arrow" />
             <ul class="selected_option select">
               <li class="option">Selecione</li>
               <li class="option">Gênero</li>
@@ -579,9 +579,9 @@
 
         function generateInfosBook(book, class_1, EmprestarDevolver, InativarAtivar, buttonAtivarInativar) {
           return `
-          <img src="../imagens/Caminho 265.svg" class="icone_fechar">
+          <img src="../assets/svg/Caminho 265.svg" class="icone_fechar">
           <img src="${book.image}" alt="${book.title}">
-          <button class="botao_devolucao ${class_1}" ><img src='../imagens/auto_stories_FILL0_wght400_GRAD0_opsz48 (1).svg'> <p>${EmprestarDevolver}</p></button>
+          <button class="botao_devolucao ${class_1}" ><img src='../assets/svg/auto_stories_FILL0_wght400_GRAD0_opsz48 (1).svg'> <p>${EmprestarDevolver}</p></button>
           <div class="textos">
             <h2>${book.title}</h2>
             <div class="texto_sinopse">
@@ -627,15 +627,15 @@
 
         body_historico.innerHTML = `
         <tr class="filtros">
-          <td class="alunos"><img src="../imagens/Caminho 147.svg" /></td>
-          <td class="turmas"><img src="../imagens/Caminho 147.svg" /></td>
-          <td class="retirada"><img src="../imagens/Caminho 147.svg" /></td>
-          <td class="entrega"><img src="../imagens/Caminho 147.svg" /></td>
+          <td class="alunos"><img src="../assets/svg/Caminho 147.svg" /></td>
+          <td class="turmas"><img src="../assets/svg/Caminho 147.svg" /></td>
+          <td class="retirada"><img src="../assets/svg/Caminho 147.svg" /></td>
+          <td class="entrega"><img src="../assets/svg/Caminho 147.svg" /></td>
         </tr>
         `;
 
         card_selected_historico.innerHTML = `
-        <img src="../imagens/Caminho 265.svg" class="icone_fechar">
+        <img src="../assets/svg/Caminho 265.svg" class="icone_fechar">
         <h2>Histórico de empréstimos do livro</h2>
         `;
 
@@ -796,7 +796,7 @@
             card_selected_inativar.classList.add('selected_book_inativar');
 
             card_selected_inativar.innerHTML = `
-                <img src="../imagens/Caminho 265.svg" class="icone_fechar">
+                <img src="../assets/svg/Caminho 265.svg" class="icone_fechar">
                 <h2>Inativar Livro</h2>
                 <div class="container_inativar">
                     <textarea id="text_inativar" rows="5" required></textarea>
@@ -852,7 +852,7 @@
             card_selected_emprestar.classList.add('selected_book_emprestar');
 
             card_selected_emprestar.innerHTML = `
-                <img src="../imagens/Caminho 265.svg" class="icone_fechar">
+                <img src="../assets/svg/Caminho 265.svg" class="icone_fechar">
                 <h2 class="informe_dados">Informe os dados do aluno antes de continuar</h2>
                 <form class="infos_emprestar">
                     <div class="inputText">
@@ -872,7 +872,7 @@
                         <label for="dataEntrega">Data da entrega</label>
                     </div>
                 </form>
-                <button class="botao_devolucao botao_emprestar_2"><img src='../imagens/auto_stories_FILL0_wght400_GRAD0_opsz48 (1).svg'> <p>Emprestar</p></button>
+                <button class="botao_devolucao botao_emprestar_2"><img src='../assets/svg/auto_stories_FILL0_wght400_GRAD0_opsz48 (1).svg'> <p>Emprestar</p></button>
                 `;
 
             $selected_book.removeChild(card_selected_infos);
@@ -988,7 +988,7 @@
             editar_livro.innerHTML = `
               <nav class="nav_home">
                 <a href="#" class="home">
-                  <img src="../imagens/chevron_left_FILL0_wght400_GRAD0_opsz48.svg" alt="Icone voltar" />
+                  <img src="../assets/svg/chevron_left_FILL0_wght400_GRAD0_opsz48.svg" alt="Icone voltar" />
                   Home
                 </a>
                 <p><b>/ Editar livro</b></p>
@@ -1017,7 +1017,7 @@
                   <div class="container_select input_genero">
                     <textarea readonly rows="1" class="default_option"></textarea>
                     <p class="label_select label_disabled">Gênero</p>
-                    <img src="../imagens/Polígono 4.svg" class="arrow" />
+                    <img src="../assets/svg/Polígono 4.svg" class="arrow" />
                     <ul class="selected_option select">
                     </ul>
                   </div>

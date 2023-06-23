@@ -6,7 +6,7 @@
 }
 
 body {
-  background: url('../imagens/emil-widlund-xrbbXIXAWY0-unsplash.png');
+  background: url('../assets/emil-widlund-xrbbXIXAWY0-unsplash.png');
   background-position: center;
   background-size: cover;
   font-family: 'Roboto', sans-serif;
@@ -17,7 +17,7 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: url('../imagens/Retângulo\ 310.svg');
+  background: url('../assets/svg/Retângulo\ 310.svg');
   background-size: cover;
 }
 
