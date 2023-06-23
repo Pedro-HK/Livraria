@@ -871,8 +871,8 @@
                         <input type="date" id="dataEntrega" required>
                         <label for="dataEntrega">Data da entrega</label>
                     </div>
+                    <button type="submit" class="botao_devolucao botao_emprestar_2"><img src='../assets/svg/auto_stories_FILL0_wght400_GRAD0_opsz48 (1).svg'> <p>Emprestar</p></button>
                 </form>
-                <button class="botao_devolucao botao_emprestar_2"><img src='../assets/svg/auto_stories_FILL0_wght400_GRAD0_opsz48 (1).svg'> <p>Emprestar</p></button>
                 `;
 
             $selected_book.removeChild(card_selected_infos);
@@ -887,12 +887,17 @@
             const $dataRetirada = document.querySelector('.selected_book_emprestar #dataRetirada');
             const $dataEntrega = document.querySelector('.selected_book_emprestar #dataEntrega');
 
+            $dataRetirada.addEventListener('change', () => {
+              $dataEntrega.setAttribute('min', `${$dataRetirada.value}`);
+            });
+
             const $emprestar_2 = document.querySelector('.selected_book_emprestar .botao_emprestar_2');
 
             //Confirmar emprestimo e atualizar os dados no card
 
             $emprestar_2.addEventListener('click', () => {
-              if ($nome.value !== '' && $turma.value !== '' && $dataEntrega.value !== '' && $dataRetirada.value !== '') {
+              if ($nome.value !== '' && $turma.value !== '' && $dataEntrega.value !== '' && $dataRetirada.value !== '' && $dataRetirada.value <= $dataEntrega.value) {
+                console.log($dataRetirada.value <= $dataEntrega.value);
                 let inputWithdrawal = new Date($dataRetirada.value);
                 let inputDelivery = new Date($dataEntrega.value);
 
@@ -970,8 +975,6 @@
 
                   $selected_book.appendChild(card_selected_infos);
                 });
-              } else {
-                alert('Preencha todos os campos!');
               }
             });
           });
@@ -1140,7 +1143,6 @@
             }
 
             $titulo_1.value = book.title;
-            // $imgCapa.src = book.image;
             $sinopse_1.value = book.synopsis;
             $autor_1.value = book.author;
             $select_default.textContent = book.genre;
