@@ -204,7 +204,7 @@
 
           <div class="container_select input_genero">
             <textarea readonly rows="1" class="default_option"></textarea>
-            <p class="label_select label_disabled">Gênero</p>
+            <p class="label_select">Gênero</p>
             <img src="../imagens/Polígono 4.svg" class="arrow" />
             <ul class="selected_option select">
             </ul>
@@ -250,23 +250,24 @@
     const $select_options = document.querySelectorAll('.selected_option .option');
 
     $container_select.addEventListener('click', () => {
-      // $container_select.classList.toggle('active');
-
       if (!$container_select.classList.contains('active')) {
         $container_select.classList.add('active');
+
         $select_options.forEach((option) => {
           option.addEventListener('click', () => {
             $select_default.innerText = option.textContent;
-
-            $container_select.classList.remove('active');
-
-            $label_select.classList.add('label_actived');
           });
         });
+        if ($select_default.classList.contains('label_actived')) {
+          $label_select.classList.remove('label_actived');
+        } else {
+          $label_select.classList.add('label_actived');
+        }
       } else {
+        if ($select_default.textContent === '') {
+          $label_select.classList.remove('label_actived');
+        }
         $container_select.classList.remove('active');
-        $label_select.classList.remove('label_actived');
-        $select_default.blur();
       }
     });
 
@@ -352,6 +353,10 @@
 
       if ($title.value !== '' && $sinopse.value !== '' && $autor.value !== '' && $genero.value !== '' && $dataEntrada.value !== '' && $capa.hasChildNodes()) {
         addBook(data);
+        $containerMain.removeChild(novo_livro);
+        $containerMain.appendChild($navHome);
+
+        alert('Livro cadastrado com sucesso!');
       } else {
         alert('Preencha todos os campos!');
         $title.value = '';
@@ -362,16 +367,10 @@
         $dataEntrada.value = '';
       }
 
-      $containerMain.removeChild(novo_livro);
-
       $label_image.innerHTML = `
         <img src="../imagens/Caminho 261.svg" alt="Adicionar capa" />
         <p>Capa</p>
       `;
-
-      $containerMain.appendChild($navHome);
-
-      alert('Livro cadastrado com sucesso!');
     });
 
     //Cancelar cadastro de novo Livro
@@ -441,7 +440,7 @@
           </form>
           <div class="container_select">
             <textarea readonly rows="1" class="default_option">Selecione</textarea>
-            <p class="label_select label_disabled">Filtrar</p>
+            <p class="label_select">Ordenar</p>
             <img src="../imagens/Polígono 4.svg" class="arrow" />
             <ul class="selected_option select">
               <li class="option">Selecione</li>
@@ -469,55 +468,56 @@
     const $label_select = document.querySelector('.label_select');
     const container_livros = document.querySelector('.container_livros');
 
+    //Funcao para ordenar categorias
+    function ordenaCategoria() {
+      let books = [...data];
+
+      container_livros.innerHTML = '';
+
+      if ($select_default.textContent === 'Gênero') {
+        books.sort((a, b) => (a.genre < b.genre ? -1 : 1));
+        putBooks(books);
+      } else if ($select_default.textContent === 'Autor') {
+        books.sort((a, b) => (a.author < b.author ? -1 : 1));
+        putBooks(books);
+      } else if ($select_default.textContent === 'Data de Entrada') {
+        function converterData(dataString) {
+          const partes = dataString.split('/');
+          const dia = parseInt(partes[0]);
+          const mes = parseInt(partes[1]) - 1;
+          const ano = parseInt(partes[2]);
+          return new Date(ano, mes, dia);
+        }
+
+        books.sort((a, b) => converterData(b.systemEntryDate) - converterData(a.systemEntryDate));
+        putBooks(books);
+      } else {
+        putBooks(books);
+      }
+    }
+
     //Animação e funcionalidade do select
 
     $container_select.addEventListener('click', () => {
       if (!$container_select.classList.contains('active')) {
         $container_select.classList.add('active');
+
         $select_options.forEach((option) => {
           option.addEventListener('click', () => {
             $select_default.innerText = option.textContent;
-
-            $container_select.classList.remove('active');
-
-            $label_select.classList.add('label_actived');
-
             ordenaCategoria();
           });
         });
-      } else {
-        $label_select.classList.remove('label_actived');
-        $container_select.classList.remove('active');
-        $select_default.blur();
-      }
-
-      //Funcao para ordenar categorias
-
-      function ordenaCategoria() {
-        let books = [...data];
-
-        container_livros.innerHTML = '';
-
-        if ($select_default.textContent === 'Gênero') {
-          books.sort((a, b) => (a.genre < b.genre ? 1 : -1));
-          putBooks(books);
-        } else if ($select_default.textContent === 'Autor') {
-          books.sort((a, b) => (a.author < b.author ? 1 : -1));
-          putBooks(books);
-        } else if ($select_default.textContent === 'Data de Entrada') {
-          function converterData(dataString) {
-            const partes = dataString.split('/');
-            const dia = parseInt(partes[0]);
-            const mes = parseInt(partes[1]) - 1;
-            const ano = parseInt(partes[2]);
-            return new Date(ano, mes, dia);
-          }
-
-          books.sort((a, b) => converterData(b.systemEntryDate) - converterData(a.systemEntryDate));
-          putBooks(books);
+        if ($select_default.classList.contains('label_actived')) {
+          $label_select.classList.remove('label_actived');
         } else {
-          putBooks(books);
+          $label_select.classList.add('label_actived');
         }
+      } else {
+        if ($select_default.textContent === 'Selecione') {
+          $label_select.classList.remove('label_actived');
+        }
+        $container_select.classList.remove('active');
       }
     });
 
@@ -1070,19 +1070,22 @@
             $container_select.addEventListener('click', () => {
               if (!$container_select.classList.contains('active')) {
                 $container_select.classList.add('active');
+
                 $select_options.forEach((option) => {
                   option.addEventListener('click', () => {
                     $select_default.innerText = option.textContent;
-
-                    $container_select.classList.remove('active');
-
-                    $label_select.classList.add('label_actived');
                   });
                 });
+                if ($select_default.classList.contains('label_actived')) {
+                  $label_select.classList.remove('label_actived');
+                } else {
+                  $label_select.classList.add('label_actived');
+                }
               } else {
-                $label_select.classList.remove('label_actived');
+                if ($select_default.textContent === '') {
+                  $label_select.classList.remove('label_actived');
+                }
                 $container_select.classList.remove('active');
-                $select_default.blur();
               }
             });
 

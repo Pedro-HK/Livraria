@@ -255,9 +255,6 @@ main .nav_paginas ul li:hover {
   transition: all 0.4s ease-in-out;
 }
 
-.container_select .default_option:focus + p,
-.container_select .default_option:valid + p,
-.container_select.active .label_select,
 .container_select .label_select.label_actived {
   transform: translate(-0.25rem, -1.5rem);
   padding: 0 4px;
