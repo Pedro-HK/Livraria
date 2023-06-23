@@ -995,9 +995,10 @@
               </nav>
               <section class="section_adicionar_livro">
                 <div class="container_adicionar_livro">
-                  <div class="capa">
-                    <img alt="Imagem capa" />
-                  </div>
+                  <label class="capa">
+                    <input type="file" accept="image/*" class="input_image">
+                    <span class="label_image"></span>
+                  </label>
 
                   <div class="container_input input_titulo">
                     <input type="text" class="input_style" id="titulo" required />
@@ -1038,10 +1039,6 @@
 
             $background.classList.add('hide');
             $selected_book.classList.add('hide');
-
-            const $imgCapa = document.querySelector('.pagina_editar .capa img');
-
-            $imgCapa.src = book.image;
 
             //Animação e funcionalidade do select
 
@@ -1089,9 +1086,49 @@
               }
             });
 
+            //editar capa do livro
+
+            const $input_file = document.querySelector('.capa .input_image');
+            const $label_image = document.querySelector('.capa .label_image');
+
+            $label_image.innerHTML = `
+              <img src="${book.image}" alt="Adicionar capa" />
+            `;
+
+            $input_file.addEventListener('change', function (e) {
+              const input_target = e.target;
+              const file = input_target.files[0];
+
+              if (file) {
+                const reader = new FileReader();
+
+                reader.addEventListener('load', function (e) {
+                  const reader_target = e.target;
+
+                  const img = document.createElement('img');
+                  img.src = reader_target.result;
+                  img.classList.add('selected_img');
+
+                  $label_image.innerHTML = '';
+
+                  $label_image.appendChild(img);
+                });
+
+                reader.readAsDataURL(file);
+              } else {
+                $label_image.innerHTML = `
+                  <img src="${book.image}" alt="Adicionar capa" />
+                  <p>Capa</p>
+                `;
+              }
+            });
+
+            //inserir informações do livro nos inputs
+
             const $titulo_1 = document.querySelector('.pagina_editar #titulo');
             const $sinopse_1 = document.querySelector('.pagina_editar #sinopse');
             const $autor_1 = document.querySelector('.pagina_editar #autor');
+
             const $data_1 = document.querySelector('.pagina_editar #data');
 
             function converterData(dataString) {
@@ -1103,6 +1140,7 @@
             }
 
             $titulo_1.value = book.title;
+            // $imgCapa.src = book.image;
             $sinopse_1.value = book.synopsis;
             $autor_1.value = book.author;
             $select_default.textContent = book.genre;
@@ -1115,6 +1153,7 @@
               const $titulo_2 = document.querySelector('.pagina_editar #titulo');
               const $sinopse_2 = document.querySelector('.pagina_editar #sinopse');
               const $autor_2 = document.querySelector('.pagina_editar #autor');
+              const $imgCapa = document.querySelector('.pagina_editar .capa img');
               const $genero_2 = document.querySelector('.pagina_editar .default_option');
               const $data_2 = document.querySelector('.pagina_editar #data');
 
@@ -1124,6 +1163,7 @@
                 let changedEntry = inputEntry.toLocaleDateString('pt-BR', { timeZone: 'UTC' });
 
                 book.title = $titulo_2.value;
+                book.image = $imgCapa.src;
                 book.synopsis = $sinopse_2.value;
                 book.author = $autor_2.value;
                 book.genre = $genero_2.value;
